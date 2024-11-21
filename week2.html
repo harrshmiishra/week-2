@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventConnect - Community Events</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li:hover {
+      background-color: #004d55;
+      border-radius: 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 90vh;
+      background: url('https://source.unsplash.com/1600x900/?community,event') no-repeat center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      padding: 2rem;
+      margin-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero button {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background: #ff5722;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      color: white;
+    }
+
+    .hero button:hover {
+      background: #e64a19;
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 2rem;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    .about h2 {
+      margin-bottom: 1rem;
+      color: #006d77;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    /* Registration Form */
+    .registration {
+      padding: 4rem 2rem;
+      background: #fff;
+      text-align: center;
+    }
+
+    .registration h2 {
+      margin-bottom: 1rem;
+      color: #006d77;
+    }
+
+    .registration form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .registration form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .registration form input,
+    .registration form select,
+    .registration form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .registration form button {
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 1rem;
+      background: #006d77;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .registration form button:hover {
+      background: #004d55;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 4rem 2rem;
+      background: #e0f7fa;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 1rem;
+      color: #006d77;
+    }
+
+    .contact p {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .contact a {
+      color: #004d55;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">EventConnect</div>
+    <ul>
+      <li onclick="scrollToSection('home')">Home</li>
+      <li onclick="scrollToSection('about')">About</li>
+      <li onclick="scrollToSection('registration')">Register</li>
+      <li onclick="scrollToSection('contact')">Contact</li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>Welcome to EventConnect</h1>
+    <p>Your gateway to amazing community events.</p>
+    <button onclick="scrollToSection('registration')">Join an Event</button>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>EventConnect is a platform that brings communities together by organizing and promoting local events. Whether you're looking to attend workshops, networking events, or family activities, we've got something for everyone!</p>
+  </section>
+
+  <!-- Registration Form Section -->
+  <section class="registration" id="registration">
+    <h2>Register for an Event</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+      <label for="event">Select Event</label>
+      <select id="event" name="event" required>
+        <option value="">--Choose an Event--</option>
+        <option value="workshop">Community Workshop</option>
+        <option value="networking">Networking Night</option>
+        <option value="family">Family Fun Day</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Any special requests or comments"></textarea>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us via email at <a href="mailto:info@eventconnect.com">info@eventconnect.com</a> or call us at (123) 456-7890.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 EventConnect. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>
